@@ -31,10 +31,10 @@ var todoStorage = {
     todos.forEach(function(todo, index) {
       todo.id = index
     })
-    todoStorage.uid = todo.length
-    return tudos
+    todoStorage.uid = todos.length
+    return todos
   },
-  save: function(tods) {
+  save: function(todos) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
   }
 }
