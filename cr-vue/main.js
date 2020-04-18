@@ -28,6 +28,13 @@ const app = new Vue({
     ],
     current: -1
   },
+  computed: {
+    computedTodos: function() {
+      return this.todos.filter(function(el) {
+        return this.current < 0 ? true : this.current === el.state
+      }, this)
+    }
+  },
   methods: {
     doAdd: function(event, value) {
       var comment = this.$refs.comment
