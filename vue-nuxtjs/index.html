@@ -7,22 +7,36 @@
   <body>
     <h1>Vue.js</h1>
     <div id="app">
-      {{ message.toUpperCase() }}
+      {{ message }}
     </div>
     <hr>
-    <input type="text" oninput="doAction(event);">
+    <button onclick="doAction();">clicke</button>
     <script>
       var data = {
-        message: "Hello Vue!"
+        message: "Hello Vue!",
+        items: ['One', 'Two', 'Three', 'Four', 'Five']
       }
 
       var app = new Vue({
         el: '#app',
-        data: data
+        data: data,
+        render: (h) => {
+          return h('div', [
+            h('p',
+              {'style':'font-size:20pt; color:red;'},
+              data.message),
+            h('ol',
+              data.items.map(i => h('li', i)))
+          ])
+        }
       })
 
-      function doAction(event) {
-        data.message = event.target.value;
+      function doAction() {
+        var newdata = ['いち', 'に', 'さん', 'よん', 'ご']
+        data.message = "クリックしました!!!";
+        for (n in data.items) {
+          data.items[n] = newdata[n]
+        }
       }
     </script>
   </body>
